@@ -1,0 +1,11 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine on
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^(.+?)\.d\d+\.js\??.*?$
+RewriteRule ^(.+?)\.d\d+\.js\??.*?$ $1.js [L]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^(.+?)\.d\d+\.css\??.*?$
+RewriteRule ^(.+?)\.d\d+\.css\??.*?$ $1.css [L]

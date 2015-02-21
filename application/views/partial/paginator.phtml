@@ -1,0 +1,41 @@
+<?
+
+/** @var \Sb\Phalcon\Helpers\UrlHelper $url */
+/** @var \Sb\Phalcon\Paginator\Paginator $paginator */
+/** @var array $paginatorParams */
+
+?>
+
+<? if (isset($paginator) && $paginator->getTotalPages() > 1): ?>
+
+    <ul class="pagination pagination-small">
+        <li <? if ($paginator->getBefore() == $paginator->getCurrentPage()): ?>class="disabled" <?endif;?>>
+            <? if ($paginator->getBefore() == 1): ?>
+                <a href="<?= $url->get($paginatorRouteName, $paginatorParams); ?>">Назад</a>
+            <? else :?>
+                <a href="<?= $url->get($paginatorRouteName, $paginatorParams); ?>?page=<?=$paginator->getBefore()?>">Назад</a>
+            <? endif; ?>
+        </li>
+
+        <? foreach ($paginator->getPagesInRange() as $page): ?>
+            <li <? if ($page == $paginator->getCurrentPage()): ?>class="active" <? endif; ?>>
+                <? if ($page == 1): ?>
+                    <a href="<?= $url->get($paginatorRouteName, $paginatorParams); ?>">
+                        <? echo $page; ?>
+                    </a>
+                <? else: ?>
+                    <a href="<?= $url->get($paginatorRouteName, $paginatorParams); ?>?page=<?=$page?>">
+                        <? echo $page; ?>
+                    </a>
+                <? endif; ?>
+
+            </li>
+        <? endforeach; ?>
+
+        <li <? if ($paginator->getLast() == $paginator->getCurrentPage()): ?>class="disabled"<? endif;?>>
+            <a href="<?=  $url->get($paginatorRouteName, $paginatorParams); ?>?page=<?=$paginator->getNext()?>">Вперед</a>
+        </li>
+
+    </ul>
+
+<? endif; ?>

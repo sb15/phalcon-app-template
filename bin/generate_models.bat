@@ -1,0 +1,2 @@
+php GenerateModels.php
+pause

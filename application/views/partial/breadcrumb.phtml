@@ -1,0 +1,17 @@
+<?
+    /** @var \Sb\Phalcon\Helpers\BreadcrumbHelper $breadcrumb */
+?>
+
+<? if ($breadcrumb->exist()): ?>
+    <ul class="breadcrumb">
+        <? $i = 1; ?>
+        <? foreach ($breadcrumb->getBreadcrumbs() as $breadcrumbElement): ?>
+            <? if ($i == count($breadcrumb->getBreadcrumbs())): ?>
+                <li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="<?= $breadcrumbElement->getUrl()?>"><span itemprop="title"><?= $breadcrumbElement->getName()?></span></a></li>
+            <? else: ?>
+                <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="<?= $breadcrumbElement->getUrl()?>"><span itemprop="title"><?= $breadcrumbElement->getName()?></span></a></li>
+            <? endif; ?>
+            <? $i++; ?>
+        <? endforeach; ?>
+    </ul>
+<? endif; ?>
