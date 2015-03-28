@@ -9,8 +9,8 @@ $router->add("/",
     ))->setName('main');
 
 $router->notFound(array(
-    "controller" => "index",
-    "action" => "error"
+    "controller" => "error",
+    "action" => "notFound"
 ));
 
 return $router;

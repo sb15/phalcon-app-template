@@ -118,6 +118,7 @@ class Bootstrap
             $eventsManager->attach("dispatch:afterExecuteRoute", new Plugins\UrlPlugin());
             $eventsManager->attach("dispatch:afterExecuteRoute", new Plugins\SeoPlugin());
             $eventsManager->attach("dispatch:afterExecuteRoute", new Plugins\BreadcrumbPlugin());
+            $eventsManager->attach("dispatch:beforeException", new Plugins\ErrorHandlingPlugin());
 
             $dispatcher = new \Phalcon\Mvc\Dispatcher();
             $dispatcher->setEventsManager($eventsManager);
